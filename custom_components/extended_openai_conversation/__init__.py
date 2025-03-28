@@ -233,10 +233,10 @@ class OpenAIAgent(conversation.AbstractConversationAgent):
         intent_response = intent.IntentResponse(language=user_input.language)
         intent_response.async_set_speech(query_response.message.content)
         return conversation.ConversationResult(
-            response=intent_response, conversation_id=chat_log.conversation_id, continue_conversation=continue_conversation(query_response.message.content)
+            response=intent_response, conversation_id=chat_log.conversation_id, continue_conversation=self.continue_conversation(query_response.message.content)
         )
 
-    def continue_conversation(content) -> bool:
+    def continue_conversation(self, content) -> bool:
         """Return whether the conversation should continue."""
         if not content:
             return False
