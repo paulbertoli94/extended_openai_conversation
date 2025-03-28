@@ -241,19 +241,14 @@ class OpenAIAgent(conversation.AbstractConversationAgent):
         _LOGGER.info("chat_log.content: %s", json.dumps(content))
         if not content:
             return False
-
+    
         last_msg = content[-1]
         _LOGGER.info("Lasta message to check continue_conversation: %s", json.dumps(last_msg))
-
+    
         return (
-            last_msg.role == "assistant"
-            and last_msg.content is not None
-            and last_msg.content.strip().endswith(
-                (
-                    "?",
-                    ";",  # Greek question mark
-                )
-            )
+            last_msg["role"] == "assistant"
+            and last_msg.get("content") is not None
+            and last_msg.get("content", "").strip().endswith(("?", ";"))
         )
 
     def _generate_system_message(
