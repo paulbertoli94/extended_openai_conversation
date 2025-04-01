@@ -233,7 +233,7 @@ class OpenAIAgent(conversation.AbstractConversationAgent):
         intent_response = intent.IntentResponse(language=user_input.language)
         intent_response.async_set_speech(query_response.message.content)
         return conversation.ConversationResult(
-            response=intent_response, conversation_id=chat_log.conversation_id, continue_conversation=self.continue_conversation(chat_log.content)
+            response=intent_response, conversation_id=chat_log.conversation_id
         )
 
     def continue_conversation(self, content) -> bool:
