@@ -1,5 +1,5 @@
 {
   "name": "extended_openai_conversation",
   "render_readme": true,
-  "homeassistant": "2025.4"
+  "homeassistant": "2025.4.0b1"
 }
