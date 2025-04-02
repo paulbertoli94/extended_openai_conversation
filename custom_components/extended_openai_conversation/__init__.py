@@ -202,9 +202,9 @@ class OpenAIAgent(conversation.AbstractConversationAgent):
                 intent.IntentResponseErrorCode.UNKNOWN,
                 f"Sorry, I had a problem talking to OpenAI: {err}",
             )
-        return conversation.ConversationResult(
-            response=intent_response, conversation_id=chat_log.conversation_id, continue_conversation=self.continue_conversation(chat_log.content)
-        )
+            return conversation.ConversationResult(
+                response=intent_response, conversation_id=chat_log.conversation_id, continue_conversation=self.continue_conversation(chat_log.content)
+            )
         except HomeAssistantError as err:
             _LOGGER.error(err, exc_info=err)
             intent_response = intent.IntentResponse(language=user_input.language)
