@@ -248,7 +248,7 @@ class OpenAIAgent(conversation.AbstractConversationAgent):
         return (
             last_msg["role"] == "assistant"
             and last_msg.get("content") is not None
-            and last_msg.get("content", "").strip().endswith(("?", ";"))
+            and last_msg.get("content", "").strip().endswith(("?", "？", ";"))
         )
 
     def _generate_system_message(
